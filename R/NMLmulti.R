@@ -25,23 +25,28 @@ welford <- function(x,m1m2count){
   
 
 ##########################################################
-# function that fits a model and returns -log-likelihood #
+# functions that fit a model and returns -log-likelihood #
 ##########################################################
 
-fit_model <- function(chd,NN,fun,parl) return(nlminb(rnorm(parl),fun,chd=chd,NN=NN)$objective)
+fit_model <- function(chd,NN,fun,parl,fits){
+  start_par_mat <- matrix(rnorm(parl*fits), nrow=fits)
+  t_fits <- apply(start_par_mat,1,function(x) nlminb(x,fun,chd=chd,NN=NN)$objective)
+  return(return(min(t_fits)))
+}
+
 
 ######################################
 # function that puts it all together #
 ######################################
 
-run_nml <- function(fun,parl,ks,Ns,batchsize=2000,burn=1000, thin=1,precision=0.2, cores=NULL){
+run_nml <- function(fun,parl,ks,Ns,fits=2, batchsize=2000,burn=1000, thin=1,precision=0.2, cores=NULL){
   
   if(is.null(cores)) cores <- round(parallel::detectCores()*0.8)
   cl <- parallel::makePSOCKcluster(cores)
   
   NN <- rep(Ns,ks)
   parallel::clusterExport(cl, list("fit_model"))
-  parallel::clusterExport(cl, list("fun","NN"), envir=environment())
+  parallel::clusterExport(cl, list("fun","NN","fits"), envir=environment())
   
     
   # burnin samples
@@ -51,7 +56,7 @@ run_nml <- function(fun,parl,ks,Ns,batchsize=2000,burn=1000, thin=1,precision=0.
   lbatch <- list()
   for(ccc in 1:cores) lbatch[[ccc]] <- gen_chain(ks,Ns,batchsize,thin,startvec[[ccc]])
 
-  lfit <- parallel::parLapply(cl=cl, X=lbatch, function(x) exp(-apply(x,1,fit_model,NN=NN,fun=fun,parl=10)))
+  lfit <- parallel::parLapply(cl=cl, X=lbatch, function(x) exp(-apply(x,1,fit_model,NN=NN,fits=fits, fun=fun,parl=10)))
   bbatchh <- lapply(lfit,welford,m1m2count=c(0,0,1))
   estbatch <- matrix(unlist(bbatchh),ncol=3,byrow=TRUE)
   if(nrow(estbatch)> 1){poolvarmean <- mean((mean(estbatch[,1])-estbatch[,1])**2)}else{poolvarmean <- estbatch[1,2]/(estbatch[1,3]-1)}
@@ -77,7 +82,7 @@ run_nml <- function(fun,parl,ks,Ns,batchsize=2000,burn=1000, thin=1,precision=0.
   lbatch <- list()
   for(ccc in 1:cores) lbatch[[ccc]] <- gen_chain(ks,Ns,batchsize,thin,lastit[[ccc]])
   
-  lfit <- parLapply(cl=cl, X=lbatch, function(x) exp(-apply(x,1,fit_model,NN=NN,fun=fun,parl=10)))
+  lfit <- parallel::parLapply(cl=cl, X=lbatch, function(x) exp(-apply(x,1,fit_model,NN=NN,fits=fits,fun=fun,parl=10)))
   
   for(ccc in 1:cores) bbatchh[[ccc]] <- welford(lfit[[ccc]],m1m2count=estbatch[ccc,])
   estbatch <- matrix(unlist(bbatchh),ncol=3,byrow=TRUE)
