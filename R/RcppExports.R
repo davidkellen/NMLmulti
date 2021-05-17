@@ -2,42 +2,54 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 sample_m <- function(n) {
-    .Call(`_NMLmulti_sample_m`, n)
+    .Call(`_NMLnew_sample_m`, n)
 }
 
 reject <- function(n) {
-    .Call(`_NMLmulti_reject`, n)
+    .Call(`_NMLnew_reject`, n)
 }
 
 gibbs <- function(n, ks) {
-    .Call(`_NMLmulti_gibbs`, n, ks)
+    .Call(`_NMLnew_gibbs`, n, ks)
 }
 
 burnin <- function(burn, init, ks, Ns) {
-    .Call(`_NMLmulti_burnin`, burn, init, ks, Ns)
+    .Call(`_NMLnew_burnin`, burn, init, ks, Ns)
 }
 
 gen_chain <- function(ks, Ns, batchsize, thin, startvec) {
-    .Call(`_NMLmulti_gen_chain`, ks, Ns, batchsize, thin, startvec)
+    .Call(`_NMLnew_gen_chain`, ks, Ns, batchsize, thin, startvec)
 }
 
 SCR <- function(Q0, chd, NN) {
-    .Call(`_NMLmulti_SCR`, Q0, chd, NN)
+    .Call(`_NMLnew_SCR`, Q0, chd, NN)
 }
 
 LT <- function(Q0, chd, NN) {
-    .Call(`_NMLmulti_LT`, Q0, chd, NN)
+    .Call(`_NMLnew_LT`, Q0, chd, NN)
 }
 
 SCR_V <- function(Q0, chd, NN) {
-    .Call(`_NMLmulti_SCR_V`, Q0, chd, NN)
+    .Call(`_NMLnew_SCR_V`, Q0, chd, NN)
 }
 
 SCR_G <- function(Q0, chd, NN) {
-    .Call(`_NMLmulti_SCR_G`, Q0, chd, NN)
+    .Call(`_NMLnew_SCR_G`, Q0, chd, NN)
+}
+
+ifmu <- function(Q0, chd, NN) {
+    .Call(`_NMLnew_ifmu`, Q0, chd, NN)
+}
+
+ufmu <- function(Q0, chd, NN) {
+    .Call(`_NMLnew_ufmu`, Q0, chd, NN)
+}
+
+qm <- function(Q0, chd, NN) {
+    .Call(`_NMLnew_qm`, Q0, chd, NN)
 }
 
 rcpp_hello_world <- function() {
-    .Call(`_NMLmulti_rcpp_hello_world`)
+    .Call(`_NMLnew_rcpp_hello_world`)
 }
 
