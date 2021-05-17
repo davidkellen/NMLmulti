@@ -149,7 +149,7 @@ double SCR(NumericVector Q0, NumericVector chd, NumericVector NN){
       LL = LL + chd[ii]*(log(chd[ii])-log(ee[ii]));
     }
   }
-  return LL;
+  return 2.0*LL;
 }
 
 
@@ -202,7 +202,7 @@ double LT(NumericVector Q0, NumericVector chd, NumericVector NN){
       LL = LL + chd[ii]*(log(chd[ii])-log(ee[ii]));
     }
   }
-  return LL;
+  return 2.0*LL;
 }
 
 
@@ -258,7 +258,7 @@ double SCR_V(NumericVector Q0, NumericVector chd, NumericVector NN){
       LL = LL + chd[ii]*(log(chd[ii])-log(ee[ii]));
     }
   }
-  return LL;
+  return 2.0*LL;
 }
 
 
@@ -311,7 +311,7 @@ double SCR_G(NumericVector Q0, NumericVector chd, NumericVector NN){
       LL = LL + chd[ii]*(log(chd[ii])-log(ee[ii]));
     }
   }
-  return LL;
+  return 2.0*LL;
 }
 
 
@@ -384,7 +384,7 @@ ee[23] = (1-I8)*(1-U8_z)*B;
       LL = LL + chd[ii]*(log(chd[ii])-log(ee[ii]));
     }
   }
-  return LL;
+  return 2.0*LL;
 }
 
 
@@ -459,7 +459,7 @@ ee[23] = (1-U8_z)*(1-I8)*B                         ;
       LL = LL + chd[ii]*(log(chd[ii])-log(ee[ii]));
     }
   }
-  return LL;
+  return 2.0*LL;
 }
 
 
@@ -532,5 +532,5 @@ ee[23] = OB8*(1-C8)*(1-A8_b)*B                                    + (1-OB8)*(1-A
       LL = LL + chd[ii]*(log(chd[ii])-log(ee[ii]));
     }
   }
-  return LL;
+  return 2.0*LL;
 }
