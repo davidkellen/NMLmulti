@@ -3,7 +3,7 @@ Type: Package
 Title: Computing Normalized Maximum Likelihood Penalties for Multinomial Models
 Version: 1.0
 Date: 2019-08-22
-Author: David Kellen
+Author: David Kellen, Karl Christoph Klauer, and Constantin Meyer-Grant
 Maintainer: Your Name <davekellen@gmail.com>
 Description: Gibbs sampling approximation of the penalty term of NML, namely the log of the sum of maximum likelihoods for all possible data in a given set of multinomial distributions. 
 License: GPL (>= 2)
