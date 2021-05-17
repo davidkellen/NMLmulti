@@ -159,16 +159,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _NMLmulti_rcpp_hello_world() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_NMLmulti_sample_m", (DL_FUNC) &_NMLmulti_sample_m, 1},
@@ -183,7 +173,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_NMLmulti_ifmu", (DL_FUNC) &_NMLmulti_ifmu, 3},
     {"_NMLmulti_ufmu", (DL_FUNC) &_NMLmulti_ufmu, 3},
     {"_NMLmulti_qm", (DL_FUNC) &_NMLmulti_qm, 3},
-    {"_NMLmulti_rcpp_hello_world", (DL_FUNC) &_NMLmulti_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };
 
