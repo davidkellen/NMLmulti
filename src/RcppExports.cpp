@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // sample_m
 double sample_m(double n);
-RcppExport SEXP _NMLnew_sample_m(SEXP nSEXP) {
+RcppExport SEXP _NMLmulti_sample_m(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -18,7 +18,7 @@ END_RCPP
 }
 // reject
 Rcpp::NumericVector reject(double n);
-RcppExport SEXP _NMLnew_reject(SEXP nSEXP) {
+RcppExport SEXP _NMLmulti_reject(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -29,7 +29,7 @@ END_RCPP
 }
 // gibbs
 Rcpp::NumericVector gibbs(NumericVector n, NumericVector ks);
-RcppExport SEXP _NMLnew_gibbs(SEXP nSEXP, SEXP ksSEXP) {
+RcppExport SEXP _NMLmulti_gibbs(SEXP nSEXP, SEXP ksSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -41,7 +41,7 @@ END_RCPP
 }
 // burnin
 Rcpp::NumericVector burnin(int burn, NumericVector init, NumericVector ks, NumericVector Ns);
-RcppExport SEXP _NMLnew_burnin(SEXP burnSEXP, SEXP initSEXP, SEXP ksSEXP, SEXP NsSEXP) {
+RcppExport SEXP _NMLmulti_burnin(SEXP burnSEXP, SEXP initSEXP, SEXP ksSEXP, SEXP NsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -55,7 +55,7 @@ END_RCPP
 }
 // gen_chain
 Rcpp::NumericMatrix gen_chain(NumericVector ks, NumericVector Ns, int batchsize, int thin, NumericVector startvec);
-RcppExport SEXP _NMLnew_gen_chain(SEXP ksSEXP, SEXP NsSEXP, SEXP batchsizeSEXP, SEXP thinSEXP, SEXP startvecSEXP) {
+RcppExport SEXP _NMLmulti_gen_chain(SEXP ksSEXP, SEXP NsSEXP, SEXP batchsizeSEXP, SEXP thinSEXP, SEXP startvecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -70,7 +70,7 @@ END_RCPP
 }
 // SCR
 double SCR(NumericVector Q0, NumericVector chd, NumericVector NN);
-RcppExport SEXP _NMLnew_SCR(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
+RcppExport SEXP _NMLmulti_SCR(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -83,7 +83,7 @@ END_RCPP
 }
 // LT
 double LT(NumericVector Q0, NumericVector chd, NumericVector NN);
-RcppExport SEXP _NMLnew_LT(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
+RcppExport SEXP _NMLmulti_LT(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -96,7 +96,7 @@ END_RCPP
 }
 // SCR_V
 double SCR_V(NumericVector Q0, NumericVector chd, NumericVector NN);
-RcppExport SEXP _NMLnew_SCR_V(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
+RcppExport SEXP _NMLmulti_SCR_V(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -109,7 +109,7 @@ END_RCPP
 }
 // SCR_G
 double SCR_G(NumericVector Q0, NumericVector chd, NumericVector NN);
-RcppExport SEXP _NMLnew_SCR_G(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
+RcppExport SEXP _NMLmulti_SCR_G(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -122,7 +122,7 @@ END_RCPP
 }
 // ifmu
 double ifmu(NumericVector Q0, NumericVector chd, NumericVector NN);
-RcppExport SEXP _NMLnew_ifmu(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
+RcppExport SEXP _NMLmulti_ifmu(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -135,7 +135,7 @@ END_RCPP
 }
 // ufmu
 double ufmu(NumericVector Q0, NumericVector chd, NumericVector NN);
-RcppExport SEXP _NMLnew_ufmu(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
+RcppExport SEXP _NMLmulti_ufmu(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -148,7 +148,7 @@ END_RCPP
 }
 // qm
 double qm(NumericVector Q0, NumericVector chd, NumericVector NN);
-RcppExport SEXP _NMLnew_qm(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
+RcppExport SEXP _NMLmulti_qm(SEXP Q0SEXP, SEXP chdSEXP, SEXP NNSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -161,7 +161,7 @@ END_RCPP
 }
 // rcpp_hello_world
 List rcpp_hello_world();
-RcppExport SEXP _NMLnew_rcpp_hello_world() {
+RcppExport SEXP _NMLmulti_rcpp_hello_world() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -171,23 +171,23 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_NMLnew_sample_m", (DL_FUNC) &_NMLnew_sample_m, 1},
-    {"_NMLnew_reject", (DL_FUNC) &_NMLnew_reject, 1},
-    {"_NMLnew_gibbs", (DL_FUNC) &_NMLnew_gibbs, 2},
-    {"_NMLnew_burnin", (DL_FUNC) &_NMLnew_burnin, 4},
-    {"_NMLnew_gen_chain", (DL_FUNC) &_NMLnew_gen_chain, 5},
-    {"_NMLnew_SCR", (DL_FUNC) &_NMLnew_SCR, 3},
-    {"_NMLnew_LT", (DL_FUNC) &_NMLnew_LT, 3},
-    {"_NMLnew_SCR_V", (DL_FUNC) &_NMLnew_SCR_V, 3},
-    {"_NMLnew_SCR_G", (DL_FUNC) &_NMLnew_SCR_G, 3},
-    {"_NMLnew_ifmu", (DL_FUNC) &_NMLnew_ifmu, 3},
-    {"_NMLnew_ufmu", (DL_FUNC) &_NMLnew_ufmu, 3},
-    {"_NMLnew_qm", (DL_FUNC) &_NMLnew_qm, 3},
-    {"_NMLnew_rcpp_hello_world", (DL_FUNC) &_NMLnew_rcpp_hello_world, 0},
+    {"_NMLmulti_sample_m", (DL_FUNC) &_NMLmulti_sample_m, 1},
+    {"_NMLmulti_reject", (DL_FUNC) &_NMLmulti_reject, 1},
+    {"_NMLmulti_gibbs", (DL_FUNC) &_NMLmulti_gibbs, 2},
+    {"_NMLmulti_burnin", (DL_FUNC) &_NMLmulti_burnin, 4},
+    {"_NMLmulti_gen_chain", (DL_FUNC) &_NMLmulti_gen_chain, 5},
+    {"_NMLmulti_SCR", (DL_FUNC) &_NMLmulti_SCR, 3},
+    {"_NMLmulti_LT", (DL_FUNC) &_NMLmulti_LT, 3},
+    {"_NMLmulti_SCR_V", (DL_FUNC) &_NMLmulti_SCR_V, 3},
+    {"_NMLmulti_SCR_G", (DL_FUNC) &_NMLmulti_SCR_G, 3},
+    {"_NMLmulti_ifmu", (DL_FUNC) &_NMLmulti_ifmu, 3},
+    {"_NMLmulti_ufmu", (DL_FUNC) &_NMLmulti_ufmu, 3},
+    {"_NMLmulti_qm", (DL_FUNC) &_NMLmulti_qm, 3},
+    {"_NMLmulti_rcpp_hello_world", (DL_FUNC) &_NMLmulti_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_NMLnew(DllInfo *dll) {
+RcppExport void R_init_NMLmulti(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
