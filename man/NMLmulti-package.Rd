@@ -12,9 +12,9 @@ Computes NML penalties for models of joint multinomial data using Monte Carlo in
 
 }
 \author{
-David Kellen and Karl Christoph Klauer
+David Kellen, Karl Christoph Klauer, and Constantin Meyer-Grant
 
-Maintainer: David  <davekellen@gmail.com>
+Maintainer: David Kellen <davekellen@gmail.com>
 }
 \references{
 Klauer, K. C., & Kellen, D. (2011). The flexibility of models of recognition memory: An analysis by the minimum-description length principle. Journal of Mathematical Psychology, 55, 430-450.
