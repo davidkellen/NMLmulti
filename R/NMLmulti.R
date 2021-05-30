@@ -109,7 +109,7 @@ run_nml <- function(fun,parl,ks,Ns,fits=2,batchsize=2000,burn=1000,thin=1,precis
   cl <- parallel::makePSOCKcluster(cores)
   
   parallel::clusterEvalQ(cl=cl,library("Rcpp"))
-  parallel::clusterEvalQ(cl=cl,sourceCpp("NMLmulti.cpp"))
+  parallel::clusterEvalQ(cl=cl,library("NMLmulti"))
   
   NN <- rep(Ns,ks)
   parallel::clusterExport(cl, list("fit_model","fun","NN","fits","parl","Ns","ks", "burn", "batchsize", "thin"), envir=environment())   # adaptation for parallel sampling
