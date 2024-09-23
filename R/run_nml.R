@@ -89,7 +89,7 @@ welford <- function(x,m1m2count){
 
 fit_model <- function(chd,NN,fun,parl,fits){
   start_par_mat <- matrix(rnorm(parl*fits), nrow=fits)
-  t_fits <- apply(start_par_mat,1,function(x) nlminb(x,get(fun),chd=chd,NN=NN)$objective)
+  t_fits <- apply(start_par_mat,1,function(x) nlminb(x,dynGet(fun),chd=chd,NN=NN)$objective)
   return(return(min(t_fits)))
 }
 
@@ -98,18 +98,35 @@ fit_model <- function(chd,NN,fun,parl,fits){
 ######################################
 # (replaces old version)
 
-run_nml <- function(fun,parl,ks,Ns,fits=2,batchsize=2000,burn=1000,thin=1,precision=0.2,cores=NULL,G2=T,stopcrit=c("betw_logmean","betw_meanlog","betw_max","within_max","all_max"),aggmethod=c("logmean","meanlog")){ # G2 is a new indicator: if T fun must return 1/2 * G^2, if F fun must return negative log-likelihood
+run_nml <- function(
+    fun,parl,ks,Ns,
+    fits=2,batchsize=2000,burn=1000,
+    thin=1,precision=0.2,
+    cores=NULL, packages_multicore = NULL,
+    G2=TRUE,
+    stopcrit=c("betw_logmean","betw_meanlog","betw_max","within_max","all_max"),
+    aggmethod=c("logmean","meanlog"))
+{ # G2 is a new indicator: if T fun must return 1/2 * G^2, if F fun must return negative log-likelihood
 
   fun <- deparse(substitute(fun))
   
   aggmethod <- match.arg(aggmethod)
   stopcrit <- match.arg(stopcrit)
   if(is.null(cores)){ cores <- round(parallel::detectCores()*0.8) } else { cores <- round(cores)}
+  if (cores == 1) {
+    stop("'cores = 1' is curretnly not supported.", call. = TRUE)
+  }
   
   cl <- parallel::makePSOCKcluster(cores)
   
   parallel::clusterEvalQ(cl=cl,library("Rcpp"))
   parallel::clusterEvalQ(cl=cl,library("NMLmulti"))
+  if (!is.null(packages_multicore)) {
+    for (p in packages_multicore) {
+      parallel::clusterExport(cl, "p", envir=environment())
+      parallel::clusterEvalQ(cl=cl,library(p, character.only = TRUE))
+    }
+  }
   
   NN <- rep(Ns,ks)
   parallel::clusterExport(cl, list("fit_model","fun","NN","fits","parl","Ns","ks", "burn", "batchsize", "thin"), envir=environment())   # adaptation for parallel sampling
