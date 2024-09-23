@@ -49,7 +49,3 @@ qm <- function(Q0, chd, NN) {
     .Call(`_NMLmulti_qm`, Q0, chd, NN)
 }
 
-rcpp_hello_world <- function() {
-    .Call(`_NMLmulti_rcpp_hello_world`)
-}
-
