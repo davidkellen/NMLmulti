@@ -89,7 +89,7 @@ welford <- function(x,m1m2count){
 
 fit_model <- function(chd,NN,fun,parl,fits){
   start_par_mat <- matrix(rnorm(parl*fits), nrow=fits)
-  t_fits <- apply(start_par_mat,1,function(x) nlminb(x,dynGet(fun),chd=chd,NN=NN)$objective)
+  t_fits <- apply(start_par_mat,1,function(x) nlminb(x, get(fun),chd=chd,NN=NN)$objective)
   return(return(min(t_fits)))
 }
 
@@ -114,7 +114,7 @@ run_nml <- function(
   stopcrit <- match.arg(stopcrit)
   if(is.null(cores)){ cores <- round(parallel::detectCores()*0.8) } else { cores <- round(cores)}
   if (cores == 1) {
-    stop("'cores = 1' is curretnly not supported.", call. = TRUE)
+    stop("'cores = 1' is currently not supported.", call. = TRUE)
   }
   
   cl <- parallel::makePSOCKcluster(cores)
